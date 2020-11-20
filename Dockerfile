@@ -1,4 +1,4 @@
-FROM node:12.19.0-alpine3.12 as js-builder
+FROM quay.io/ibmz/node:14.14.0 as js-builder
 
 WORKDIR /usr/src/app/
 
