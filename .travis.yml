@@ -1,0 +1,18 @@
+arch: s390x
+services:
+  - docker
+env:
+  global:
+    - TEST_DIR="$PWD/"
+    - TEST_SCRIPT="test.sh"
+    - BUILD_DIR="$PWD/"
+    - REPO="quay.io/ibmz/zookeeper"
+    - TAG="$REPO:3.6.2"
+before_script: 
+#  - cd $TEST_DIR && chmod +x $TEST_SCRIPT
+  - docker login quay.io -u $ROBOT -p $ROBOT_TOKEN
+script: 
+  - docker build $BUILD_DIR --tag $TAG
+#  - cd $TEST_DIR && bash $TEST_SCRIPT 
+after_script:
+#  - docker push $REPO
